@@ -1,0 +1,6 @@
+# KiCad auto-backup files
+hardware/picoprobe-backups/
+
+# KiCad lock files
+*.lck
+~*
