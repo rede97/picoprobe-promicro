@@ -1,6 +1,7 @@
 # KiCad auto-backup files
 hardware/picoprobe-backups/
 hardware/production/picoprobe_panel-backups/
+hardware/smt_sample/picoprobe_panel-backups/
 
 # KiCad lock files
 *.lck
@@ -8,3 +9,6 @@ hardware/production/picoprobe_panel-backups/
 
 # Fabrication toolkit auto-generated output (nested copy)
 hardware/production/production/
+
+# kikit panelization script output (generated, not committed)
+hardware/smt_sample/

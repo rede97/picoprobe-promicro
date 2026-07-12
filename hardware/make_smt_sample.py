@@ -20,7 +20,7 @@ Prerequisite:
     "C:\Program Files\KiCad\10.0\bin\python.exe" -m pip install kikit
 
 Output:
-  hardware/production/picoprobe_panel.kicad_pcb
+  hardware/smt_sample/picoprobe_panel.kicad_pcb
 
 Note: panel kept under 10cm per side for low-cost PCB fab.
 """
@@ -37,7 +37,7 @@ import sys
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BOARD_DIR = os.path.join(PROJECT_DIR, "hardware")
 BOARD_FILE = os.path.join(BOARD_DIR, "picoprobe.kicad_pcb")
-OUTPUT_DIR = os.path.join(BOARD_DIR, "production")
+OUTPUT_DIR = os.path.join(BOARD_DIR, "smt_sample")
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "picoprobe_panel.kicad_pcb")
 CONFIG_FILE = os.path.join(OUTPUT_DIR, "panelize.json")
 
