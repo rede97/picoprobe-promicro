@@ -1,6 +1,10 @@
 # KiCad auto-backup files
 hardware/picoprobe-backups/
+hardware/production/picoprobe_panel-backups/
 
 # KiCad lock files
 *.lck
 ~*
+
+# Fabrication toolkit auto-generated output (nested copy)
+hardware/production/production/

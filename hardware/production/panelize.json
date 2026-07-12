@@ -1,0 +1,65 @@
+{
+    "layout": {
+        "type": "grid",
+        "rows": 1,
+        "cols": 2,
+        "hspace": "4mm",
+        "vspace": "4mm",
+        "rotation": "0deg",
+        "alternation": "none",
+        "renamenet": "Board_{n}-{orig}",
+        "renameref": "{orig}"
+    },
+    "source": {
+        "type": "auto",
+        "tolerance": "1mm"
+    },
+    "tabs": {
+        "type": "spacing",
+        "hcount": 1,
+        "vcount": 1,
+        "hwidth": "5mm",
+        "vwidth": "5mm",
+        "mindistance": "0mm",
+        "spacing": "10mm"
+    },
+    "cuts": {
+        "type": "mousebites",
+        "drill": "0.6mm",
+        "spacing": "0.8mm",
+        "offset": "-0.2mm",
+        "prolong": "0mm"
+    },
+    "framing": {
+        "type": "frame",
+        "hspace": "4mm",
+        "vspace": "2mm",
+        "width": "5mm",
+        "cuts": "both"
+    },
+    "tooling": {
+        "type": "4hole",
+        "hoffset": "2.0mm",
+        "voffset": "2.0mm",
+        "size": "2mm",
+        "paste": false,
+        "soldermaskmargin": "0mm"
+    },
+    "fiducials": {
+        "type": "4fid",
+        "hoffset": "4.5mm",
+        "voffset": "4.5mm",
+        "coppersize": "1mm",
+        "opening": "1.5mm",
+        "paste": false
+    },
+    "post": {
+        "type": "auto",
+        "copperfill": false,
+        "reconstructarcs": false,
+        "millradius": "0mm",
+        "origin": "tl",
+        "refillzones": false,
+        "dimensions": false
+    }
+}
