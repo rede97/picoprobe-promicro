@@ -171,6 +171,10 @@ def main():
         print(f"  bridge {i+1}: x={mid_x/mm:.1f}, gap={actual_gap/mm:.2f}mm, "
               f"y={y1/mm:.1f}..{y2/mm:.1f}")
 
+    # NOTE: merged PCB has duplicate reference designators (C1, R1, U1, etc.)
+    # with conflicting values between boards. Do NOT export BOM from merged PCB.
+    # Use per-board BOM from original .kicad_pcb files for assembly.
+    #
     # Merge substrates with bridge polygons
     merged = unary_union([s.substrates for s in pane.substrates])
     for cy in cy_list:
