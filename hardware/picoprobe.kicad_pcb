@@ -2333,7 +2333,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C17168"
+		(property "LCSC Part" "C21189"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4939,7 +4939,7 @@
 				)
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 0 -33)
@@ -6148,7 +6148,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C17168"
+		(property "LCSC Part" "C21189"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")

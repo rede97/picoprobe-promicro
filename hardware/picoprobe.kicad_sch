@@ -4753,7 +4753,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C17168"
+		(property "LCSC Part" "C21189"
 			(at 48.26 172.72 90)
 			(hide yes)
 			(show_name no)
@@ -5024,7 +5024,7 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C17168"
+		(property "LCSC Part" "C21189"
 			(at 41.91 172.72 90)
 			(hide yes)
 			(show_name no)
