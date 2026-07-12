@@ -92,7 +92,6 @@ def add_bridge_lines(board, layer_id, x, y1, y2, gap):
     l4.SetWidth(w)
     board.Add(l4)
 
-
 def main():
     kicad_py = find_kicad_python()
     if not kicad_py:
@@ -105,7 +104,7 @@ def main():
     import pcbnew
     from kikit.panelize import Panel, Origin
     from kikit.units import mm
-    from shapely.geometry import box as sbox
+    from shapely.geometry import box as sbox, LineString
     from shapely.ops import unary_union
 
     print("=" * 60)
@@ -118,7 +117,7 @@ def main():
             sys.exit(1)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    BRIDGE_GAP = int(4 * mm)  # desired edge-to-edge gap
+    BRIDGE_GAP = int(3 * mm)  # desired edge-to-edge gap
 
     # --- measure board sizes ---
     pane = Panel(MERGED_FILE)
@@ -161,8 +160,8 @@ def main():
     # --- add bridges: 6mm tall, fill gap, 3 total ---
     edge_layer = pane.board.GetLayerID("Edge.Cuts")
     mid_x = int(left_right + actual_gap // 2)
-    bw_v = int(3 * mm)          # half-height: 6mm total per bridge
-    bridge_pitch = int(11 * mm)  # 6mm bridge + 5mm spacing
+    bw_v = int(2.5 * mm)          # half-height: 5mm total per bridge
+    bridge_pitch = int(10.5 * mm)  # 5mm bridge + 5.5mm spacing
     cy_list = [bridge_pitch, 0, -bridge_pitch]
 
     for i, cy in enumerate(cy_list):
@@ -179,6 +178,54 @@ def main():
         y2 = int(cy + bw_v)
         merged = unary_union([merged, sbox(left_right, y1, right_left, y2)])
     pane.boardSubstrate.substrates = merged
+
+    # Add mousebite NPTH pads along board edges (not bridge center)
+    # left board right edge + right board left edge, with safety margin from traces
+    drill_nm = int(0.6 * mm)
+    spacing_nm = int(0.8 * mm)
+    edge_margin_nm = int(0.35 * mm)  # safety margin from edge
+    pad_idx = 0
+
+    # Mousebite positions: left edge of right board + right edge of left board
+    edge_layer = pane.board.GetLayerID("Edge.Cuts")
+    mb_x_left = int(left_right + edge_margin_nm)   # right edge of picoprobe
+    mb_x_right = int(right_left - edge_margin_nm)  # left edge of tiny232
+
+    for cy in cy_list:
+        y1_mb = int(cy - bw_v)
+        y2_mb = int(cy + bw_v)
+        y = y1_mb + spacing_nm // 2
+        while y < y2_mb - drill_nm // 2:
+            fp_l = pcbnew.FOOTPRINT(pane.board)
+            fp_l.Reference().SetVisible(False)
+            fp_l.Value().SetVisible(False)
+            pad_l = pcbnew.PAD(fp_l)
+            pad_l.SetPosition(pcbnew.VECTOR2I(mb_x_left, y))
+            pad_l.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+            pad_l.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
+            pad_l.SetSize(pcbnew.VECTOR2I(drill_nm, drill_nm))
+            pad_l.SetDrillSize(pcbnew.VECTOR2I(drill_nm, drill_nm))
+            ls = pcbnew.LSET()
+            ls.AddLayer(pcbnew.Edge_Cuts)
+            pad_l.SetLayerSet(ls)
+            fp_l.Add(pad_l)
+            pane.board.Add(fp_l)
+
+            fp_r = pcbnew.FOOTPRINT(pane.board)
+            fp_r.Reference().SetVisible(False)
+            fp_r.Value().SetVisible(False)
+            pad_r = pcbnew.PAD(fp_r)
+            pad_r.SetPosition(pcbnew.VECTOR2I(mb_x_right, y))
+            pad_r.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+            pad_r.SetAttribute(pcbnew.PAD_ATTRIB_NPTH)
+            pad_r.SetSize(pcbnew.VECTOR2I(drill_nm, drill_nm))
+            pad_r.SetDrillSize(pcbnew.VECTOR2I(drill_nm, drill_nm))
+            pad_r.SetLayerSet(ls)
+            fp_r.Add(pad_r)
+            pane.board.Add(fp_r)
+
+            pad_idx += 1
+            y += spacing_nm
 
     pane.save()
     print(f"[INFO] Merged: {MERGED_FILE}")
