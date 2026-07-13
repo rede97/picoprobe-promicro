@@ -7372,7 +7372,7 @@
 		(uuid "51681c91-7e23-4fc9-ba44-e012b7f291c5")
 	)
 	(gr_text "PICO-PROBE"
-		(at 70.586 51.378 90)
+		(at 70.586 51.378 270)
 		(layer "F.SilkS")
 		(uuid "fb62234c-6dcd-4930-935a-85dbd2e7c302")
 		(effects
@@ -7380,11 +7380,11 @@
 				(size 1 1)
 				(thickness 0.1)
 			)
-			(justify left mirror)
+			(justify left)
 		)
 	)
 	(gr_text "PRO-MICRO"
-		(at 91.414 51.378 90)
+		(at 91.414 51.378 270)
 		(layer "F.SilkS")
 		(uuid "b87862c2-0f85-4dc8-bf40-e4226c31fc5e")
 		(effects
@@ -7392,7 +7392,7 @@
 				(size 1 1)
 				(thickness 0.1)
 			)
-			(justify left mirror)
+			(justify left)
 		)
 	)
 	(gr_text "TX"
