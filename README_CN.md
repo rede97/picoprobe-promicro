@@ -61,6 +61,28 @@ RP2040 Pro Micro 板载 **Boot 按键**和 **Reset 按键**，烧录固件极其
 
 [下载原理图 PDF](hardware/picoprobe_sch.pdf)
 
+## 实物照片
+
+这个调试器与**树莓派 Pico 2** 和 **nRF52840** 配合得非常好，完美工作，下载速度非常快。
+
+### 1. 插座组装（可拆卸）
+
+通过排针和排母插座将 Pro Micro 组装到底板上，插上即可调试，随时可以取下，将核心板用于其他项目。
+
+![插座组装（可拆卸）](hardware/picture/assembly-socket-detachable.jpg)
+
+### 2. 焊接成一体
+
+将 Pro Micro 直接焊死在底板上，做成一个整体。这种组装方式体积更小，与可拆卸版本**没有任何功能上的区别**——电路相同，性能相同。
+
+![焊接成一体](hardware/picture/assembly-soldered-integrated.jpg)
+
+### 3. 调试 nRF52840
+
+通过 SWD 对 nRF52840 目标板进行调试和烧录，完美工作，下载速度非常快。
+
+![调试 nRF52840](hardware/picture/debug-nrf52840.jpg)
+
 ## 项目结构
 
 ```
@@ -71,6 +93,7 @@ RP2040 Pro Micro 板载 **Boot 按键**和 **Reset 按键**，烧录固件极其
 │   ├── picoprobe-front.png      # 正面渲染图
 │   ├── picoprobe-back.png       # 背面渲染图
 │   ├── picoprobe_sch.pdf        # 原理图 PDF
+│   ├── picture/                 # 实物照片
 │   └── kicad_pro_micro_rp2040/  # Pro Micro RP2040 封装库 (submodule)
 ├── README.md
 └── README_CN.md

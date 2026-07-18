@@ -59,6 +59,28 @@ Rather than designing a complete debugger from scratch, this project pairs a wid
 
 [Download schematic PDF](hardware/picoprobe_sch.pdf)
 
+## Real-World Photos
+
+This debugger works perfectly with both the **Raspberry Pi Pico 2** and the **nRF52840** — rock-solid in practice, with very fast download speeds.
+
+### 1. Detachable socket assembly
+
+The Pro Micro is mounted on the board via pin headers and female header sockets. Plug it in to debug; pull it off anytime and reuse the module in other projects.
+
+![Detachable socket assembly](hardware/picture/assembly-socket-detachable.jpg)
+
+### 2. Soldered as one piece
+
+The Pro Micro is soldered directly onto the board as a single, integrated unit. This version is smaller in volume, and is otherwise **functionally identical** to the detachable version — same circuit, same performance.
+
+![Soldered as one piece](hardware/picture/assembly-soldered-integrated.jpg)
+
+### 3. Debugging an nRF52840
+
+Debugging and flashing an nRF52840 target over SWD. Works flawlessly, with very fast download speeds.
+
+![Debugging an nRF52840](hardware/picture/debug-nrf52840.jpg)
+
 ## Project Structure
 
 ```
@@ -69,6 +91,7 @@ Rather than designing a complete debugger from scratch, this project pairs a wid
 │   ├── picoprobe-front.png      # Front render
 │   ├── picoprobe-back.png       # Back render
 │   ├── picoprobe_sch.pdf        # Schematic PDF
+│   ├── picture/                 # Real-world photos
 │   └── kicad_pro_micro_rp2040/  # Pro Micro RP2040 footprint library (submodule)
 ├── README.md
 └── README_CN.md
